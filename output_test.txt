@@ -1,26 +1,21 @@
 
- no target issue is found
- These issues are stale:
-,14,
-These issues are stale:
-,17,These issues are stale: 
-,19,These issues are stale:
-,18,These issues are closed by bot:
-,14,These issues are closed by bot:
-,17
- no target issue is found
- no target issue is found
+ The issues got tagged are: 7,5 
+ no target issue is found 
 
+ The issues got tagged are: These issues are closed by bot: 
+,5,These issues are closed by bot: 
+,7 
+
+ The issues got tagged are: These issues are closed by bot: 
+,5,These issues are closed by bot: 
+,7 
+
+ The issues got tagged are: These issues are closed by bot: 
+,5,These issues are closed by bot: 
+,7 
  no target issue is found 
- no target issue is found 
- no target issue is found 
- no target issue is found 
- no target issue is found 
- no target issue is found 
- no target issue is found 
- no target issue is found 
- no target issue is found 
- no target issue is found 
- no target issue is found 
- no target issue is found 
- no target issue is found 
+
+ The issues got tagged are: These issues are closed by bot: 8 
+ ,These issues are closed by bot: 6 
+ ,These issues are closed by bot: 4 
+   

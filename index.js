@@ -18,8 +18,10 @@ module.exports =async robot => {
 
   async function addlable (context) {
     const config = await context.config(`demo.yml`)
+
     if (config) {
       const configWithDefaults = Object.assign({}, require('./lib/defaults'), config)
+      //console.log(configWithDefaults)
       const bot = new Icpbot(context, configWithDefaults, robot.log)
       return bot.sweep()
     }

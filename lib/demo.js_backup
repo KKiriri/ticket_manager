@@ -28,9 +28,7 @@ module.exports = class icpbot{
 
     //Labelissues.forEach(issue => this.addlable(this.context.repo({number: issue.number})))
     Closeableissues.forEach(issue => this.close(this.context.repo({number: issue.number})))
-    var d = new Date();
-    console.log(d.toJSON().slice(0,19).replace('T',':'));
-    fs.appendFile('output_test.txt','Result recorded at '+d.toJSON().slice(0,19).replace('T',':')+':')
+
     if(this.issuesnum=== [] || this.issuesnum == 0){
       fs.appendFile('output_test.txt',` no target issue is found \n`
       , (err) => {
@@ -57,7 +55,7 @@ module.exports = class icpbot{
     const {DaysUntilClose, Addedlablename} = this.config
     const labeledEarlierThan = this.since(DaysUntilClose)
 
-    this.logger.info('will close issues updated earlier than '+ labeledEarlierThan)
+    this.logger.info('will close issues updated earlier than '+ labeledEarlierThan + ' under repository ' +  repo)
     var q = `repo:${owner}/${repo} is:issue is:open  updated:<=${labeledEarlierThan} label:${Addedlablename} `
     const params = {q, sort: 'updated', order: 'desc', per_page: 100}
     const issues = await this.github.search.issues(params)
@@ -77,7 +75,7 @@ module.exports = class icpbot{
     const {owner, repo} = this.context.repo()
     const {DaysuntilAdd,Squadgroup,TargetLabel,ExcludeMilestones,ExcludeLabel,Addedlablename} = this.config
     const UpdatedEarlierThan = this.since(DaysuntilAdd)
-    this.logger.info('will add label to issues updated earlier than '+UpdatedEarlierThan)
+    this.logger.info('will add label to issues updated earlier than '+UpdatedEarlierThan + ' under repository ' +  repo)
     // find updated time is before certain amount of days, then check if updated_time is created_time
     var q = `repo:${owner}/${repo} is:issue is:open  updated:<=${UpdatedEarlierThan} `
     if (ExcludeLabel.length!=0){
@@ -205,7 +203,7 @@ async unmark (issue) {
       if(events.data[events.data.length-1].body!=tagComment&&events.data[events.data.length-1].body!=closeComment){
       this.logger.info('%s/%s#%d is being unmarked', owner, repo, number)
       await this.github.issues.removeLabel({owner, repo, number, name: Addedlablename})
-      fs.appendFile('output_test.txt',` Issue with number `+issue.number +` is unmarked \n`)
+
       if (issueInfo.data.state === 'closed') {
         this.github.issues.update({owner, repo, number, state: 'open'})
       }
@@ -217,7 +215,7 @@ async unmark (issue) {
 }
 
 async ResponseLabelExists (issue) {
-  const labels = await this.github.issues.getIssueLabels(issue)
+  const labels = await this.github.issues.listLabelsOnIssue(issue)
 
   return labels.data.map(label => label.name).includes(this.config.Addedlablename)
   }

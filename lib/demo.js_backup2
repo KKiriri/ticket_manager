@@ -9,36 +9,44 @@ module.exports = class icpbot{
     this.config = config//yml file's content
     this.logger = logger
   }
+//const {DaysuntilAdd, Addedlablename} = this.config
+//read constant from yml file
+  /**
+   * requried parameters in the yaml file
+    Addedlablename
+    DaysuntilAdd
+   */
+// this.logger.info(this.config, `starting mark and sweep of ${type}`)
 
 // main function
   async sweep () {
-    this.issuesnum=[]
+    this.issuesnum=[];
+    //fs.truncate('output_test.txt', 0, function(){console.log('clear previous data')})
     this.logger.debug('Starting sweep')
-    //const Labelissues =await this.getrequiredIssues()
+    const Labelissues =await this.getrequiredIssues()
     const Closeableissues = await this.getClosableIssues()
 
+    //Labelissues.forEach(issue => this.addlable(this.context.repo({number: issue.number})))
     Closeableissues.forEach(issue => this.close(this.context.repo({number: issue.number})))
-    var d = new Date()
-    console.log(d.toJSON().slice(0,19).replace('T',':'))
-    await fs.appendFileSync('output.txt','Result recorded at '+d.toJSON().slice(0,19).replace('T',':')+':',(error)=>{
-    console.log(error)
-    })
+    var d = new Date();
+    console.log(d.toJSON().slice(0,19).replace('T',':'));
+    fs.appendFile('output_test.txt','Result recorded at '+d.toJSON().slice(0,19).replace('T',':')+':')
     if(this.issuesnum=== [] || this.issuesnum == 0){
-      fs.appendFileSync('output.txt',` no issue requiring stale tag is found \n`
+      fs.appendFile('output_test.txt',` no target issue is found \n`
       , (err) => {
         // throws an error, you could also catch it here
-        if (err) throw err
+        if (err) throw err;
         // success case, the file was saved
-        this.logger.info('0 issue is found \n')
+        this.logger.info('0 issue is found \n');
         }
       )
     }
     else{
-    fs.appendFileSync('closed_issue.txt',`The issues got closed are: ${this.issuesnum} \n`, (err) => {
+    fs.appendFile('output_test.txt',`\n The issues got tagged are: ${this.issuesnum} ` + ' \n', (err) => {
       // throws an error, you could also catch it here
-      if (err) throw err
+      if (err) throw err;
       // success case, the file was saved
-      this.logger.info('output to file succesed \n')
+      this.logger.info('output to file succesed \n');
       }
     )}
   }
@@ -79,20 +87,21 @@ module.exports = class icpbot{
     }
     if (Squadgroup.length!=0){
     for (var i in Squadgroup){
-      var squadname='label:'+`"squad:${Squadgroup[i]}" `
+      var squadname='label:'+'squad:'+Squadgroup[i]+' '
       var eachsquad=q+squadname
         if (TargetLabel.length!=0){
           for (var i in TargetLabel){
           var labelname='label:'+TargetLabel[i]+' '
           var eachlabel=eachsquad+labelname
-          await this.issuelocate(eachlabel)
+          this.issuelocate(eachlabel)
         }
       }else{
-        await this.issuelocate(eachsquad)
+        this.issuelocate(eachsquad)
       }
     }
   }
-    return
+    //issue => this.addlable(this.context.repo({number: issue.number}))
+    return //this.issuelocate(q)//neverRepliedArray.forEach(issue => this.addlable(this.context.repo({number: issue.number})))
   }
 
 
@@ -100,16 +109,17 @@ async issuelocate(q){
   const {Addedlablename,ExcludeMilestones} = this.config
 
   const params = {q, sort: 'updated', order: 'desc', per_page: 100}
+
   const issues = await this.github.search.issues(params)
-  this.logger.info(q)
+  this.logger.info('the total number of issues need to be updated is '+issues.data.total_count)
+  // const time = new Date(issues[0].data.items.created_at)
   if (issues.data.total_count===0) {
     this.logger.info('no issue found')
   }
   else{
   this.logger.info('issue created and updated time: '+ `${issues.data.items[0].created_at} + ${issues.data.items[0].updated_at}`)
   }
-//pop out ExcludeMilestones after this.github.search.issues()
-//because the github Api don't provide function to exclude multiple milestones, So wrote a separate function to do that
+
   for (var i = issues.data.items.length -1; i >= 0; i--){
     if (ExcludeMilestones.length!=0){
       for (var j in ExcludeMilestones){
@@ -125,7 +135,10 @@ async issuelocate(q){
     }
   }
       const neverRepliedArray = await scramjet.fromArray(issues.data.items).filter(issue =>
-        issue.labels.find(label => label.name === Addedlablename)==null
+        // const event = await this.findneverRepliedIssue(owner, repo, issue.number)
+        // const creationDate = new Date(event.created_at)
+        // this.logger.info(issue.labels)
+        issue.labels.find(o => o.name === Addedlablename)==null
      ).toArray()
      neverRepliedArray.forEach(issue => this.addlable(this.context.repo({number: issue.number})))
      return neverRepliedArray
@@ -138,7 +151,7 @@ async addlable(issue){
   const {owner,repo} = this.context.issue()
    var num =issue.number
    //this.issuesnum.push('These issues are stale: \n');
-  this.issuesnum.push(' \n This issues are tagged by bot: '+num);
+  this.issuesnum.push(num);
 
 
 if (perform){
@@ -150,7 +163,7 @@ if (perform){
   async close (issue) {
     const {closeComment, perform} = this.config
     var num =issue.number
-    this.issuesnum.push(' \n This issues are closed by bot: '+ num +' \n ');
+    this.issuesnum.push(' \n These issues are closed by bot: '+ num +' \n ');
 
 
     if (perform) {
@@ -163,6 +176,13 @@ if (perform){
       this.logger.info('%s/%s#%d would have been closed (dry-run)', issue.owner, issue.repo, issue.number)
     }
   }
+// async findneverRepliedIssue (owner, repo, number) {
+//   const {responseRequiredLabel} = this.config
+//   const params = {owner, repo, issue_number: number, per_page: 100}
+//   const events = await this.github.paginate(this.github.issues.getEvents(params))
+//   return events[0].data.reverse()
+//                .find(event => event.event === 'labeled' && event.label.name === responseRequiredLabel);
+// }
 
 since (days) {
   const ttl = days * 24 * 60 * 60 * 1000
@@ -180,20 +200,12 @@ async unmark (issue) {
   const comment = this.context.payload.comment
   const issueInfo = await this.github.issues.get(issue)
   const events = await this.github.issues.listComments({owner, repo, number, since:filterrecent})
-
-  if (await this.ResponseLabelExists(issue)) {
+  if (this.ResponseLabelExists(issue)) {
     if (perform) {
       if(events.data[events.data.length-1].body!=tagComment&&events.data[events.data.length-1].body!=closeComment){
-        //Add this due to async function in the bot. Ensure the tag or close comment won't make the issue rerfreshed
       this.logger.info('%s/%s#%d is being unmarked', owner, repo, number)
       await this.github.issues.removeLabel({owner, repo, number, name: Addedlablename})
-      fs.appendFile('unmarked.txt',`\n Issue #${number}` + ' is unmarked \n', (err) => {
-        // throws an error, you could also catch it here
-        if (err) throw err
-        // success case, the file was saved
-        this.logger.info('unmarked and output to file \n')
-      }
-     )
+      fs.appendFile('output_test.txt',` Issue with number `+issue.number +` is unmarked \n`)
       if (issueInfo.data.state === 'closed') {
         this.github.issues.update({owner, repo, number, state: 'open'})
       }
@@ -205,7 +217,8 @@ async unmark (issue) {
 }
 
 async ResponseLabelExists (issue) {
-  const labels = await this.github.issues.listLabelsOnIssue(issue)
+  const labels = await this.github.issues.getIssueLabels(issue)
+
   return labels.data.map(label => label.name).includes(this.config.Addedlablename)
   }
 }

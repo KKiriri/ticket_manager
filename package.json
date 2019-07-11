@@ -21,10 +21,12 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "excel4node": "^1.7.2",
     "probot": "^7.2.0",
     "probot-config": "^1.0.1",
     "probot-scheduler": "^1.2.0",
-    "scramjet": "^4.20.3"
+    "scramjet": "^4.20.3",
+    "xlsx": "^0.14.3"
   },
   "devDependencies": {
     "jest": "^22.4.3",

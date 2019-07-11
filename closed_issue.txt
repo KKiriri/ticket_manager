@@ -599,3 +599,160 @@ The issues got closed are:
  , 
  This issues are closed by bot: 16216 
   
+The issues got closed are:  
+ This issues are tagged by bot: 15661, 
+ This issues are tagged by bot: 21341, 
+ This issues are tagged by bot: 20679, 
+ This issues are tagged by bot: 21209, 
+ This issues are tagged by bot: 20159, 
+ This issues are tagged by bot: 19547, 
+ This issues are tagged by bot: 19603, 
+ This issues are tagged by bot: 13078, 
+ This issues are tagged by bot: 8980, 
+ This issues are tagged by bot: 21197, 
+ This issues are tagged by bot: 19056, 
+ This issues are tagged by bot: 21144, 
+ This issues are tagged by bot: 13745, 
+ This issues are tagged by bot: 21278, 
+ This issues are tagged by bot: 21370, 
+ This issues are tagged by bot: 15792, 
+ This issues are tagged by bot: 19604, 
+ This issues are tagged by bot: 21377, 
+ This issues are tagged by bot: 21356, 
+ This issues are tagged by bot: 20833, 
+ This issues are tagged by bot: 20756, 
+ This issues are tagged by bot: 21277, 
+ This issues are tagged by bot: 17847, 
+ This issues are tagged by bot: 15679, 
+ This issues are tagged by bot: 20610 
+The issues got closed are:  
+ This issues are closed by bot: 20345 
+ , 
+ This issues are closed by bot: 20343 
+ , 
+ This issues are closed by bot: 14323 
+ , 
+ This issues are closed by bot: 10690 
+ , 
+ This issues are closed by bot: 15679 
+ , 
+ This issues are closed by bot: 17847 
+ , 
+ This issues are closed by bot: 21277 
+ , 
+ This issues are closed by bot: 20756 
+ , 
+ This issues are closed by bot: 20833 
+ , 
+ This issues are closed by bot: 21356 
+ , 
+ This issues are closed by bot: 21377 
+ , 
+ This issues are closed by bot: 19604 
+ , 
+ This issues are closed by bot: 15792 
+ , 
+ This issues are closed by bot: 21370 
+ , 
+ This issues are closed by bot: 13745 
+ , 
+ This issues are closed by bot: 21144 
+ , 
+ This issues are closed by bot: 21197 
+ , 
+ This issues are closed by bot: 19603 
+ , 
+ This issues are closed by bot: 19547 
+ , 
+ This issues are closed by bot: 20159 
+ , 
+ This issues are closed by bot: 20679 
+ , 
+ This issues are closed by bot: 21209 
+ , 
+ This issues are closed by bot: 12784 
+ , 
+ This issues are closed by bot: 10754 
+ , 
+ This issues are closed by bot: 7234 
+ , 
+ This issues are closed by bot: 20424 
+ , 
+ This issues are closed by bot: 20639 
+ , 
+ This issues are closed by bot: 14863 
+ , 
+ This issues are closed by bot: 14859 
+ , 
+ This issues are closed by bot: 14856 
+ , 
+ This issues are closed by bot: 20591 
+ , 
+ This issues are closed by bot: 18041 
+ , 
+ This issues are closed by bot: 19728 
+ , 
+ This issues are closed by bot: 13281 
+ , 
+ This issues are closed by bot: 18520 
+ , 
+ This issues are closed by bot: 20453 
+ , 
+ This issues are closed by bot: 20061 
+ , 
+ This issues are closed by bot: 20177 
+ , 
+ This issues are closed by bot: 17150 
+ , 
+ This issues are closed by bot: 15482 
+ , 
+ This issues are closed by bot: 20096 
+ , 
+ This issues are closed by bot: 20288 
+ , 
+ This issues are closed by bot: 19872 
+ , 
+ This issues are closed by bot: 19867 
+ , 
+ This issues are closed by bot: 19870 
+ , 
+ This issues are closed by bot: 14766 
+ , 
+ This issues are closed by bot: 20309 
+ , 
+ This issues are closed by bot: 20320 
+ , 
+ This issues are closed by bot: 4975 
+ , 
+ This issues are closed by bot: 15928 
+ , 
+ This issues are closed by bot: 14970 
+ , 
+ This issues are closed by bot: 15192 
+ , 
+ This issues are closed by bot: 10713 
+ , 
+ This issues are closed by bot: 19964 
+ , 
+ This issues are closed by bot: 13432 
+ , 
+ This issues are closed by bot: 16417 
+ , 
+ This issues are closed by bot: 18758 
+ , 
+ This issues are closed by bot: 18584 
+ , 
+ This issues are closed by bot: 15687 
+ , 
+ This issues are closed by bot: 375 
+ , 
+ This issues are closed by bot: 11350 
+ , 
+ This issues are closed by bot: 9901 
+ , 
+ This issues are closed by bot: 9900 
+ , 
+ This issues are closed by bot: 9898 
+ , 
+ This issues are closed by bot: 16579 
+  

@@ -20,7 +20,7 @@
     "test:watch": "jest --watch --notify --notifyMode=change --coverage"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "excel4node": "^1.7.2",
     "probot": "^7.2.0",
     "probot-config": "^1.0.1",
